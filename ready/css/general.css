@@ -1,0 +1,98 @@
+.fake-slot {
+	position: relative;
+	width: 1632px;
+	height: 1024px;
+	background: url(../img/bg.jpg);
+}
+.centered {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+}
+.top {
+	position: absolute;
+	top: 40px;
+}
+.top-point {
+	position: absolute;
+	top: 151px;
+	left: 51px;
+	width: 70px;
+	height: 70px;
+	background: #fff;
+	border-radius: 50%;
+	filter: blur(5px);
+	mix-blend-mode: overlay;
+	animation: point-anim 1s infinite linear;
+}
+@keyframes point-anim {
+	0%, 50%, 100% {
+		opacity: 0;
+	}
+	20% {
+		opacity: 1;
+	}
+}
+.top-point:nth-child(2) {
+	transform: translateX(0);
+	animation-delay: -1.6s;
+}
+.top-point:nth-child(3) {
+	transform: translateX(93px);
+	animation-delay: -1.4s;
+}
+.top-point:nth-child(4) {
+	transform: translateX(185px);
+	animation-delay: -1.2s;
+}
+.top-point:nth-child(5) {
+	transform: translateX(277px);
+	animation-delay: -1s;
+}
+.top-point:nth-child(6) {
+	transform: translateX(370px);
+	animation-delay: -.8s;
+}
+.top-point:nth-child(7) {
+	transform: translateX(462px);
+	animation-delay: -.6s;
+}
+.top-point:nth-child(8) {
+	transform: translateX(555px);
+	animation-delay: -.4s;
+}
+.top-point:nth-child(9) {
+	transform: translateX(646px);
+	animation-delay: -.2s;
+}
+
+.button {
+	cursor: pointer;
+	transition: .4s all ease-in-out;
+}
+.button:hover {
+	filter: saturate(1.2) brightness(1.2);
+	transform: scale(1.1) translateX(-45%);
+}
+.shading {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #000000bb;
+	transition: .5s all;
+}
+.showSlide > * {
+	animation: show-slide .5s forwards ease-out;
+}
+@keyframes show-slide {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}
+.hiden {
+	opacity: 0;
+	pointer-events: none;
+}

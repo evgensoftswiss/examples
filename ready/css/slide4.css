@@ -1,0 +1,61 @@
+.slide4 {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	cursor: pointer;
+}
+.notification41 {
+	left: 815px;
+	top: 348px;
+	animation: notification4-anim 1s infinite alternate ease-in-out;
+}
+.notification42 {
+	position: absolute;
+	top: 22px;
+	animation: notification42-anim 1s infinite alternate ease-in-out;
+}
+@keyframes notification4-anim {
+	to {
+		transform: scale(1.1) translateX(-45%);
+	}
+}
+@keyframes notification42-anim {
+	to {
+		transform: scale(1.06) translateX(-3%);
+	}
+}
+.button4:hover > .notification4 {
+	filter: saturate(1.2) brightness(1.2);
+	transform: scale(1.1) translateX(-45%);
+}
+.slide4 .confetti {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: url(../img/4BG_Confetti.png);
+	background-position-y: 4%;
+	animation: confetti-anim1 .4s both ease-out .1s, confetti-anim2 6s forwards linear infinite .5s;
+}
+@keyframes confetti-anim1 {
+	from {
+		transform: scale(.1);
+	}
+}
+@keyframes confetti-anim2 {
+	from {
+		background-position-y: 0;
+	}
+	to {
+		background-position-y: 1024px;
+	}
+}
+.slide4 .star {
+	position: absolute;
+	left: 100px;
+	animation: star2-animation 1s infinite alternate ease-in-out;
+}
+@keyframes star2-animation {
+	to {
+		transform: scale(1.1) rotate(-2deg);
+	}
+}

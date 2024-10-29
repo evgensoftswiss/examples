@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+
+		<link rel="stylesheet" href="css/general.css">
+		<link rel="stylesheet" href="css/slide1.css">
+		<link rel="stylesheet" href="css/slide2.css">
+		<link rel="stylesheet" href="css/slide3.css">
+		<link rel="stylesheet" href="css/slide4.css">
+		<link rel="stylesheet" href="css/temp.css">
+	</head>
+
+
+<body>
+
+
+	<div class="fake-slot">
+
+		<div class="top centered">
+			<img src="img/top.png" alt="">
+			<div class="top-point"></div>
+			<div class="top-point"></div>
+			<div class="top-point"></div>
+			<div class="top-point"></div>
+			<div class="top-point"></div>
+			<div class="top-point"></div>
+			<div class="top-point"></div>
+			<div class="top-point"></div>
+		</div>
+
+		<div class="slide1 centered">
+			<div class="frog"><img src="img/1frog.png" alt=""></div>
+			<div class="star"><img src="img/1star.png" alt=""></div>
+			<div class="slots-bg centered"><img src="img/1BlockSlots.png" alt=""></div>
+
+			<div id="slots" class="hiden">
+				<div class="slot-line line1"></div>
+				<div class="slot-line line2 delay1"></div>
+				<div class="slot-line line3 delay2"></div>
+				<div class="slot-line line4 delay3"></div>
+				<div class="slot-line line5 delay4"></div>
+			</div>
+
+			<div id="slots2" class="">
+				<div class="slot-line line1"></div>
+				<div class="slot-line line2 delay1"></div>
+				<div class="slot-line line3 delay2"></div>
+				<div class="slot-line line4 delay3"></div>
+				<div class="slot-line line5 delay4"></div>
+			</div>
+
+			<div class="button button1 centered" onclick="SlotsAnimation();"><img src="img/1Button.png" alt=""></div>
+		</div>
+
+
+
+		<div id="shading2" class="shading hiden"></div>
+
+		<div id="slide2" class="slide2 centered hiden">
+			<div class="button button2 centered" onclick="SlotsAnimation();"><img src="img/2Button.png" alt=""></div>
+			<div><div class="notification2 centered"><img src="img/2CoinRespin.png" alt=""></div></div>
+		</div>
+
+
+
+		<div id="shading3" class="shading hiden"></div>
+
+		<div id="slide3" class="slide3 centered hiden">
+			<div class="button button3 centered" onclick="ToNextStep();"><img src="img/3Button.png" alt=""></div>
+			<div><div class="notification3 centered"><img src="img/3MegaJackpot.png" alt=""></div></div>
+		</div>
+
+
+
+		<div id="shading4" class="shading hiden"></div>
+
+		<div id="slide4" class="slide4 centered hiden" onclick="openURL();">
+			<div class="confetti"></div>
+			<div class="star"><img src="img/1star.png" alt=""></div>
+			<div><div class="notification41 centered"><img src="img/4Pop-up.png" alt="">
+				<div class="notification42"><img src="img/4only_car.png" alt=""></div>
+			</div></div>
+		</div>
+
+	</div>
+
+
+
+
+
+
+
+	<script src="js/slots.js"></script>
+	
+</body>
+</html>

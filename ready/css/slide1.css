@@ -1,0 +1,158 @@
+.slide1 {
+	width: 100%;
+	height: 100%;
+	top: 54%;
+	transform: translate(-50%, -50%);
+
+}
+.button1 {
+	top: 818px;
+}
+.slide1 .slots-bg {
+	position: absolute;
+	top: 256px;
+	width: 820px;
+	height: 516px;
+	background: url(../img/1BlockSlots.png);
+}
+.slide1 .slots-bg::after {
+	content: '';
+	position: absolute;
+	top: -12px;
+	left: -18px;
+	width: 840px;
+	height: 516px;
+	clip-path: polygon(25% 0%, 100% 0%, 75% 100%, 0% 100%);
+	background: url(../img/1BlockSlots_light.png);
+	filter: blur(3px);
+	mix-blend-mode: screen;
+	animation: border-anim 2s infinite linear;
+}
+@keyframes border-anim {
+	0% {
+		clip-path: polygon(-225% 0%, -100% 0%, -125% 100%, -200% 100%);
+	}
+	100% {
+		clip-path: polygon(325% 0%, 400% 0%, 375% 100%, 300% 100%);
+	}
+}
+.slide1 .frog {
+	position: absolute;
+	top: 157px;
+	left: 43px;
+	transform-origin: right bottom;
+	animation: frog-anim 1.5s infinite alternate ease-in-out;
+}
+@keyframes frog-anim {
+	to {
+		transform: rotate(2deg);
+	}
+}
+.slide1 .star {
+	position: absolute;
+	top: 189px;
+	left: 816px;
+	transform: scale(.73) rotate(24deg);
+	animation: star1-anim 1s infinite alternate ease-in-out;
+}
+@keyframes star1-anim {
+	to {
+		transform: scale(.77) rotate(25deg);
+	}
+}
+
+
+#slots, #slots2 {
+	--slot-line-height: 1688px;
+	position: absolute;
+	left: 432px;
+	top: 288px;
+	width: 763px;
+	height: 453px;
+	overflow: hidden;
+}
+#slots:not(.animated) .slot-line,
+#slots2:not(.animated) .slot-line
+{
+	animation: none;
+}
+.slot-line {
+	position: absolute;
+	width: 145px;
+	height: calc(var(--slot-line-height));
+	background: url(../img/slot-line.png);
+	background-repeat: repeat-y;
+	background-position-y: calc(var(--position) * -1);
+	animation: line-anim 3s forwards linear;
+}
+#slots .line1 {
+	--position: 295px;
+	--position2: 760px;
+	left: 7px;
+}
+#slots .line2 {
+	--position: 1px;
+	--position2: 1227px;
+	left: 159px;
+}
+#slots .line3 {
+	--position: 608px;
+	--position2: 1px;
+	left: 310px;
+}
+#slots .line4 {
+	--position: 760px;
+	--position2: 295px;
+	left: 465px;
+}
+#slots .line5 {
+	--position: 1227px;
+	--position2: 608px;
+	left: 616px;
+}
+#slots2 .line1 {
+	--position: 760px;
+	--position2: 760px;
+	left: 7px;
+}
+#slots2 .line2 {
+	--position: 1227px;
+	--position2: 1380px;
+	left: 159px;
+}
+#slots2 .line3 {
+	--position: 1px;
+	--position2: 760px;
+	left: 310px;
+}
+#slots2 .line4 {
+	--position: 295px;
+	--position2: 760px;
+	left: 465px;
+}
+#slots2 .line5 {
+	--position: 608px;
+	--position2: 1380px;
+	left: 616px;
+}
+.delay1 {
+	animation-delay: .2s;
+}
+.delay2 {
+	animation-delay: .4s;
+}
+.delay3 {
+	animation-delay: .5s;
+}
+.delay4 {
+	animation-delay: .6s;
+}
+@keyframes line-anim {
+	0% {
+		animation-timing-function: cubic-bezier(0.075, 0.820, 0.165, 1.000);
+		background-position-y: calc(var(--position) * -1);
+	}
+	100% {
+		background-position-y: calc(var(--position2) * -1 + var(--slot-line-height) * 12);
+	}
+}
