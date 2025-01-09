@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Random</title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@
 
     <style>
         #random-game {
-          --animation-duration: .25s;
+          --animation-duration: .4s;
           position: relative;
           width: 100%;
           height: 486px;
@@ -78,23 +78,25 @@
         }
         @keyframes rgame-anim {
             from {
-                transform: rotate(2deg) scale(1.03) translate(-50%, -50%);
+                transform: rotate(1deg) scale(1.03) translate(-50%, -50%);
             }
             to {
-                transform: rotate(-2deg) scale(1) translate(-50%, -50%);
+                transform: rotate(-1deg) scale(1) translate(-50%, -50%);
             }
         }
         .game {
-            position: absolute;
-            top: -190px;
-            left: -190px;
-            transition: all var(--animation-duration) linear;
-            border-radius: 18px;
-            overflow: hidden;
+          border-radius: 18px;
+          position: absolute;
+          transition: all var(--animation-duration) linear;
+          opacity: 0;
+          scale: 0;
         }
         .game img {
-            width: 380px;
-            height: 380px;
+          position: absolute;
+          width: 380px;
+          height: 380px;
+          transform: translate(-50%, -50%);
+          transform-origin: 0 0;
         }
 
 
@@ -127,16 +129,19 @@
         const random_game = document.getElementById("random-game");
         let anim_d = parseFloat(getComputedStyle(random_game).getPropertyValue('--animation-duration'))*1000;
         const games = document.getElementsByClassName("game");
-        let ar0_dx = []; for (let i = -6; i < 6; i++) ar0_dx.push(Math.sin(Math.PI * i/10) * 500);
-        const ar_op = [0, .4, .6, .8, 1, 1, 1, 1, .8, .6, .4, 0];
-        const ar_sz = [0, 70, 100, 130, 160, 190, 190, 160, 130, 100, 70, 0];
+        let ar0_dx = []; for (let i = -6; i < 7; i++) ar0_dx.push(Math.sin(Math.PI * i/12) * 500);
+        const ar_op = [0, .4, .6, .8, 1, 1, 1, .8, .6, .4, 0];
+        const ar_sz = [0, 70, 100, 130, 160, 190, 160, 130, 100, 70, 0];
         const c_direction = 1;  // rotate direction:  1 - right to left,  -1 - left to right
+        const can_restart = false;  // can stop start again by pressing button repitedly
+
 
         let ar_dx = [];
         function resizeBlock() {
             let games_width = random_game.offsetWidth;
+            const k = games_width/1640
             for (let i = 0; i < ar0_dx.length; i++) {
-                ar_dx[i] = ar0_dx[i] * games_width/1640;
+                ar_dx[i] = ar0_dx[i] * k;
             };
         }
         resizeBlock();
@@ -156,11 +161,21 @@
         };
     
         let animation_playing = false;
+        let interval_id;
         function startAnimation() {
             if (!animation_playing) {
                 animation_playing = true;
                 addIndex();
-                setInterval(addIndex, anim_d);
+                interval_id = setInterval(addIndex, anim_d);
+            } else {
+              if (can_restart) {
+                animation_playing = false;  
+                try {
+                  clearInterval(interval_id);
+                  interval_id = null;
+                }      
+                finally {}; 
+              }
             }
         }
 
@@ -173,13 +188,13 @@
         }
         function update() {
             reset();
-            for (let i = 0; i < 12; i++) {
+            for (let i = 0; i < 13; i++) {
                 let t_index = c_index + i;
                 if (t_index>=games.length) t_index-=games.length;
-                games[t_index].style.left = (ar_dx[i] - 190)+"px";
-                games[t_index].style.opacity = ar_op[i];
-                games[t_index].style.scale = (ar_sz[i] / 380);
-                games[t_index].style.zIndex = 90 - Math.abs(i-6);
+                games[t_index].style.left = ar_dx[i]+"px";
+                games[t_index].style.opacity = ar_op[i-1];
+                games[t_index].style.scale = (ar_sz[i-1] / 380);
+                games[t_index].style.zIndex = 100 - Math.abs(i-6);
             }
         }
         update();
