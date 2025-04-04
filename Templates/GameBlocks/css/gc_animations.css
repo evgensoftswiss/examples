@@ -1,0 +1,126 @@
+/*  ANIMATIONS  */
+.hoverlay {
+  transition: all .6s;
+}
+
+.game_card:hover .hoverlay {
+  opacity: 1;
+}
+
+
+.gc_animation1 {
+  transition: all .6s;
+}
+
+.gc_animation1:hover {
+  transform: scale(1.03);
+}
+
+
+.gc_animation2 .image img {
+  transition: all .6s;
+}
+
+.gc_animation2:hover .image img {
+  transform: scale(1.1);
+}
+
+
+.gc_animation3 {
+  transition: all .6s;
+}
+
+.gc_animation3:hover {
+  transform: scale(1.15);
+  z-index: 9;
+}
+
+
+.gc_animation4 {
+  border: 1px solid #6BA6FF00;
+  box-shadow: 0px 0px 20px 0px #6BA6FF00;
+  transition: all .6s;
+}
+
+.gc_animation4:hover {
+  transform: scale(1.15);
+  border: 1px solid #6BA6FFFF;
+  box-shadow: 0px 0px 20px 0px #6BA6FFFF;
+  z-index: 9;
+}
+
+
+.gc_animation5 {
+  box-shadow: 0px 0px 20px 0px #00000000;
+  transition: all .6s;
+}
+
+.gc_animation5:hover {
+  transform: scale(1.15);
+  box-shadow: 0px 0px 20px 0px #00000080;
+  z-index: 9;
+  filter: blur(0);
+}
+
+.slider:hover .gc_animation5:not(:hover) {
+  filter: blur(3px);
+}
+
+
+.gc_animation6 {
+  box-shadow: 0px 0px 20px 0px #00000000;
+  transition: all .6s;
+}
+
+.gc_animation6:hover {
+  transform: scale(1.15);
+  box-shadow: 0px 0px 20px 0px #00000080;
+  z-index: 9;
+  filter: saturate(1);
+}
+
+.slider:hover .gc_animation6:not(:hover) {
+  filter: saturate(.1);
+}
+
+
+.gc_animation7 {
+  border: 1px solid #6BA6FF00;
+  box-shadow: 0px 0px 20px 0px #6BA6FF00;
+  transition: all .6s;
+}
+
+.gc_animation7:hover {
+  border: 1px solid #6BA6FFFF;
+  box-shadow: 0px 0px 20px 0px #6BA6FFFF;
+}
+
+
+.gc_animation8::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(180deg, #5CA4EB 0%, #314DC4 100%);
+  z-index: -1;
+}
+
+.gc_animation8 {
+  transition: all .6s;
+}
+
+.gc_animation8:hover {
+  background: #32343B00;
+}
+
+
+.gc_animation9 {
+  border: 1px solid #6BA6FF00;
+  transition: all .6s;
+}
+
+.gc_animation9:hover {
+  border: 1px solid #6BA6FFFF;
+}
