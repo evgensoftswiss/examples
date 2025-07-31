@@ -133,7 +133,7 @@
       var audio = new Audio('box.wav');
       audio.play();
 
-      obj.src = 'lootbox_t.svg';
+      obj.src = 'lootbox_t.svg?'+ Math.random()*1000000;
       selected_box = obj;
       StopAll();
     }
