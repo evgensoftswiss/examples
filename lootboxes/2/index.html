@@ -136,12 +136,12 @@
     }
 
     function selectThis(obj) {
-      obj.src = 'lb_open.svg';
+      obj.src = 'lb_open.svg?'+Math.random()*1000000;
       selected_box = obj;
       StopAll();
 
       setTimeout(() => {
-        obj.src = 'lb_idle.svg';
+        obj.src = 'lb_idle.svg?'+Math.random()*1000000;
       }, "1500");
     }
   </script>
@@ -149,5 +149,6 @@
 
 
 </body>
+
 
 </html>
