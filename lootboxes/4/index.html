@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+
+  <div id="lootboxes" >
+    <div style="top: 100px; left: 0px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+    </div>
+
+    <div style="top: 100px; left: 250px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+    </div>
+
+    <div style="top: 100px; left: 500px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+    </div>
+
+    
+  </div>
+
+
+
+
+
+
+  <style>
+    #lootboxes > div {
+      position: absolute;
+    }
+    .stopped {
+      pointer-events: none;
+    }
+    .box {
+      width: 250px;
+    }
+    .box-animation {
+      cursor: pointer;
+      animation: waving 2s infinite alternate ease-in-out
+    }
+    @keyframes waving {
+      to {
+        transform: translateY(-10px) scale(1.03);
+      }
+    }
+
+
+
+    #lootboxes {
+      position: relative;
+      border: 1px solid #333;
+    }
+    #lootboxes img {
+      position: absolute;
+    }
+
+    body {
+      background-color: black;
+    }
+  </style>
+  
+
+  <script>
+    const boxes = document.getElementById("lootboxes").getElementsByClassName("box");
+    let selected_box;
+
+    function StopAll() {
+      for (let i = 0; i < boxes.length; i++) {
+        if (selected_box == boxes[i]) {
+          boxes[i].classList.toggle("prize-animation");
+        };
+        boxes[i].classList.toggle("box-animation");
+        boxes[i].classList.add("stopped");
+      }
+    }
+    function selectThis(obj) {
+      obj.src = 'lbox_open.svg';
+      selected_box = obj;
+      StopAll();
+
+      setTimeout(() => {
+        obj.src = 'lbox_opened_idle.svg';
+      }, "1500");
+    }
+  </script>
+
+
+
+</body>
+</html>

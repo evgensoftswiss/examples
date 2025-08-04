@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<body>
+
+	<div class="chest" onclick="Clicked(this);">
+		<div class="closed-chest">
+			<img src="img/Closed Chest.png" alt="">
+			<img src="img/Light.svg" alt="">
+			<img src="img/shine.png" alt="">
+		</div>
+
+		<div class="opened-chest">
+			<img src="img/Opened lid.png" alt="">
+			<img src="img/Light_blue.svg" alt="">
+			<img src="img/Body Chest.png" alt="">
+			<img src="img/shine.png" alt="">
+			<img src="img/100 EUR.png" alt="">
+		</div>
+
+	</div>
+
+	<style>
+		.chest {
+			width: 200px;
+			height: 204px;
+			cursor: pointer;
+		}
+		.chest * {
+			position: absolute;
+		}
+		.animated {
+			animation: start-chest-animation .4s forwards ease-in-out;
+		}
+		@keyframes start-chest-animation {
+			0%, 100% {
+				transform: translateY(0px);
+			}
+			50% {
+				transform: translateY(10px);
+			}
+		}
+
+		.closed-chest {
+			transform-origin: 100px 200px;
+		}
+		.closed-chest img:nth-child(1) {
+			left: 15px;
+			top: 26px;
+		}
+		.closed-chest img:nth-child(2) {
+			left: 15px;
+			top: 16px;
+			width: 109px;
+			height: 109px;
+			mix-blend-mode: screen;
+			animation: lid-light-anim 2s infinite alternate ease-in-out;
+		}
+		@keyframes lid-light-anim {
+			to {
+				transform: translateX(15px) scale(.5);
+			}
+		}
+		.closed-chest img:nth-child(3) {
+			left: -9px;
+			top: 1px;
+			transform: scale(.05);
+			mix-blend-mode: screen;
+			transform-origin: 110px 100px;
+			animation: lid-shine-anim 2s infinite alternate ease-in-out;
+		}
+		@keyframes lid-shine-anim {
+			to {
+				transform: scale(.15);
+			}
+		}
+
+		.animated .closed-chest {
+			animation: closed-chest-hide-anim .21s forwards linear;
+		}
+		@keyframes closed-chest-hide-anim {
+			90% {
+				opacity: 1;
+			}
+			100% {
+				opacity: 0;
+				transform: scaleY(.7) scaleX(1.25);
+			}
+		}
+
+
+		.opened-chest {
+			opacity: 0;
+			--animation-duration: 1.5s;
+			transform-origin: 100px 200px;
+		}
+		.animated .opened-chest {
+			animation: opened-chest-show-anim .5s forwards ease-in-out .2s;
+		}
+		@keyframes opened-chest-show-anim {
+			1% {
+				opacity: 0;
+				transform: scaleY(.7) scaleX(1.25);
+			}
+			1% {
+				opacity: 1;
+			}
+			40% {
+				transform: scaleY(1.1) scaleX(.85);
+			}
+			100% {
+				opacity: 1;
+			}
+		}
+		.opened-chest img:nth-child(1) {
+			left: 20px;
+			top: 20px;
+			z-index: 1;
+			transform-origin: 90px 111px;
+		}
+		.animated .opened-chest img:nth-child(1) {
+			animation: lid-idle-anim var(--animation-duration) infinite alternate ease-in-out;
+		}
+		@keyframes lid-idle-anim {
+			to {
+				transform: scaleY(.97) scaleX(1.02);
+			}
+		}
+		.opened-chest img:nth-child(3) {
+			z-index: 3;
+			left: 20px;
+			top: 41px;
+		}
+		.opened-chest img:nth-child(2) {
+			left: 10px;
+			top: 11px;
+			width: 178px;
+			height: 194px;
+			z-index: 2;
+		}
+		.animated .opened-chest img:nth-child(2) {
+			animation: show-light-anim 1.2s forwards ease-in-out,
+			light-idle-anim var(--animation-duration) infinite alternate ease-in-out 1.2s;
+		}
+		@keyframes show-light-anim {
+			0% {
+				transform: translateY(0px) scale(.2);
+			}
+			50% {
+				transform: translateY(-60px) scale(.4);
+				z-index: 2;
+			}
+			100% {
+				transform: translateY(-6px) scale(1.2);
+				z-index: 5;
+			}
+		}
+		@keyframes light-idle-anim {
+			to {
+				transform: scale(.8);
+			}
+		}
+		.opened-chest img:nth-child(4) {
+			left: 0px;
+			top: 0px;
+			mix-blend-mode: screen;
+			z-index: 8;
+			opacity: 0;
+		}
+		.animated .opened-chest img:nth-child(4) {
+			animation: shine-idle-anim var(--animation-duration) infinite alternate ease-in-out var(--animation-duration);
+		}
+		@keyframes shine-idle-anim {
+			to {
+				transform: rotate(20deg) scale(.75);
+				opacity: .4;
+			}
+		}
+		.opened-chest img:nth-child(5) {
+			left: 75px;
+			top: 78px;
+			z-index: 9;
+			opacity: 0;
+			transform: scale(.4) rotate(2deg);
+		}
+		.animated .opened-chest img:nth-child(5) {
+			animation: show-text-anim .5s forwards 1s,
+				text-idle-anim var(--animation-duration) infinite alternate ease-in-out .51s;
+		}
+		@keyframes text-idle-anim {
+			to {
+				transform: scale(1.1) rotate(-2deg);
+			}
+		}
+		@keyframes show-text-anim {
+			to {
+				transform: scale(1) rotate(2deg);
+				opacity: 1;
+			}
+		}
+
+
+
+
+
+
+
+
+
+
+
+
+
+		body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    margin: auto;
+    width: 100%;
+    height: 100vh;
+    background-color: rgb(5, 27, 37);
+  }
+
+	</style>
+
+
+<script>
+	function Clicked(ob) {
+		ob.classList.toggle("animated");
+	}
+</script>
+
+</body>
+</html>

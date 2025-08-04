@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div id="lootboxes">
+
+    <div style="top: 0px; left: -200px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+      <div class="prize">
+        <div class="prize-text"><img src="100 EUR.svg" alt=""></div>
+      </div>
+    </div>
+
+    <div style="top: 0px; left: 200px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+      <div class="prize">
+        <div class="prize-text"><img src="100 EUR.svg" alt=""></div>
+      </div>
+    </div>
+
+    <div style="top: 0px; left: 600px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+      <div class="prize">
+        <div class="prize-text"><img src="100 EUR.svg" alt=""></div>
+      </div>
+    </div>
+
+
+  </div>
+
+
+
+
+
+
+  <style>
+    #lootboxes, #lootboxes>div {
+      position: absolute;
+    }
+
+    .stopped {
+      pointer-events: none;
+    }
+
+    .box {
+      width: 500px;
+    }
+
+    .box-animation {
+      cursor: pointer;
+      animation: waving 2s infinite alternate ease-in-out
+    }
+
+    @keyframes waving {
+      to {
+        transform: translateY(-10px) scale(1.03);
+      }
+    }
+
+    .prize {
+      position: relative;
+      opacity: 0;
+      width: auto;
+      height: auto;
+	scale: 1.8;
+      top: 180px;
+      left: 230px;
+      pointer-events: none;
+    }
+
+    .prize-text {
+      position: relative;
+      pointer-events: none;
+      left: -70px;
+      top: -70px;
+    }
+
+    div:has(.prize-animation)>.prize {
+      transform-origin: 30px 100px;
+      animation: prize-show 0.5s ease-out forwards 1s;
+    }
+
+    @keyframes prize-show {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+
+    #lootboxes {
+      position: relative;
+      margin: 10%;
+    }
+
+    #lootboxes img {
+      position: absolute;
+    }
+
+    body {
+      background-color: black;
+    }
+  </style>
+
+
+  <script>
+    const boxes = document.getElementById("lootboxes").getElementsByClassName("box");
+    let selected_box;
+
+    function StopAll() {
+      for (let i = 0; i < boxes.length; i++) {
+        if (selected_box == boxes[i]) {
+          boxes[i].classList.toggle("prize-animation");
+        } else {
+
+          boxes[i].classList.add("stopped");
+        };
+                  boxes[i].classList.toggle("box-animation");
+      }
+    }
+
+    function selectThis(obj) {
+      var audio = new Audio('box.wav');
+      audio.play();
+
+      obj.src = 'lootbox_t.svg'+Math.random()*1000000;
+      selected_box = obj;
+      StopAll();
+    }
+  </script>
+
+
+
+</body>
+
+</html>

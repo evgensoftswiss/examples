@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+
+  <div id="lootboxes">
+
+    <div style="top: 100px; left: 0px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+      <div class="prize">
+        <div class="prize-text">100<br />EUR</div>
+      </div>
+    </div>
+
+    <div style="top: 100px; left: 200px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+      <div class="prize">
+        <div class="prize-text">100<br />EUR</div>
+      </div>
+    </div>
+
+    <div style="top: 100px; left: 400px">
+      <img src="start.png" class="box box-animation" onclick="selectThis(this);" alt="">
+      <div class="prize">
+        <div class="prize-text">100<br />EUR</div>
+      </div>
+    </div>
+
+  </div>
+
+
+
+
+
+
+  <style>
+    #lootboxes>div {
+      position: absolute;
+    }
+
+    .stopped {
+      pointer-events: none;
+    }
+
+    .box {
+      width: 200px;
+    }
+
+    .box-animation {
+      cursor: pointer;
+      animation: waving 2s infinite alternate ease-in-out
+    }
+
+    @keyframes waving {
+      to {
+        transform: translateY(-10px) scale(1.03);
+      }
+    }
+
+    .prize {
+      position: relative;
+      opacity: 0;
+      width: auto;
+      height: auto;
+      top: 128px;
+      left: 70px;
+      pointer-events: none;
+    }
+
+    .prize-text {
+      position: relative;
+      pointer-events: none;
+      filter: drop-shadow(0 0 2px #00006650);
+
+      color: #FCFDFE;
+      text-align: center;
+      font-family: Inter, Arial, Helvetica, sans-serif;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 900;
+      line-height: 22px;
+      text-transform: uppercase;
+    }
+
+    div:has(.prize-animation)>.prize {
+      transform-origin: center 70px;
+      animation: prize-show 0.5s ease-in-out forwards .5s;
+    }
+
+    @keyframes prize-show {
+      0% {
+        opacity: 0;
+        transform: translateY(-20px) scale(0);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+
+
+    #lootboxes {
+      position: relative;
+      margin: 10%;
+    }
+
+    #lootboxes img {
+      position: absolute;
+    }
+
+    body {
+      background-color: black;
+    }
+  </style>
+
+
+  <script>
+    const boxes = document.getElementById("lootboxes").getElementsByClassName("box");
+    let selected_box;
+
+    function StopAll() {
+      for (let i = 0; i < boxes.length; i++) {
+        if (selected_box == boxes[i]) {
+          boxes[i].classList.toggle("prize-animation");
+        } else {
+          boxes[i].classList.toggle("box-animation");
+          boxes[i].classList.add("stopped");
+        };
+      }
+    }
+
+    function selectThis(obj) {
+      obj.src = 'lb_open.svg';
+      selected_box = obj;
+      StopAll();
+
+      setTimeout(() => {
+        obj.src = 'lb_idle.svg';
+      }, "1500");
+    }
+  </script>
+
+
+
+</body>
+
+</html>
